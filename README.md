@@ -1,6 +1,6 @@
 # IMPACTS Field Support
  Code created as decision support for IMPACTS deployment.
-
+[does this work](doc/wetbulb_profile.md)
 ## Setup
 1. Clone the repository into a folder. This will be your working directory. **importImpacts** and **TTwv_kFt** are the only two functions that you need to interact with; the other two are helper functions.
 
