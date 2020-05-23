@@ -36,6 +36,9 @@ switch inst
         impacts.rhum = ncread(impacts_nc,'RH');
         impacts.wind_spd = ncread(impacts_nc,'WINDSPD');
         impacts.wind_dir = ncread(impacts_nc,'WINDDRN');
+        impacts.time_str = ncreadatt(impacts_nc,'/','start_datetime');
+        impacts.datetime = datetime(impacts.time_str,'InputFormat','yyyy-MM-dd''T''HH:mm:ss''Z');
+        impacts.valid_date_num = [impacts.datetime.Year impacts.datetime.Month impacts.datetime.Day impacts.datetime.Hour]; % Format required by other code, e.g. ice growth profiles
     case 'SBU'
         msgSBU = 'Support for SBU format is unfinished!';
         warning(msgSBU)
@@ -47,6 +50,7 @@ switch inst
         impacts.rhum = ncread(impacts_nc,'rh');
         impacts.wind_spd = ncread(impacts_nc,'wspd');
         impacts.wind_dir = ncread(impacts_nc,'wdir');
+        impacts.valid_date_num = []; % Date and time are not included in NC State sounding files
     case 'NWS'
         msgNWS = 'Support for NWS format is unfinished! Use IGRA dataset and associated functions when possible.';
         warning(msgNWS)
